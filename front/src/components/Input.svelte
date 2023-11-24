@@ -1,25 +1,18 @@
----
-// Astro Fence
-
----
-
-
-<form action="#" method="post" class="input" onsubmit="handleSubmit">
-    <strong>Hand in the flag:</strong> <input type="text" id="inputFlag" placeholder="string from the txt file"/>
+<form action="#" method="post" class="input" on:submit|preventDefault={handleSubmit}>
+    <strong>Hand in the flag:</strong> 
+    <input bind:value={flag} type="text" id="inputFlag" placeholder="string from the txt file"/>
     <input type="submit" value="Send"/>
 </form>
 
-<script>
+<script lang="ts">
     import axios from "axios";
     import config from "../config.json"
 
-    function handleSubmit(e: Event) {
-        e.preventDefault();
-        const input = document.getElementById("inputFlag") as HTMLInputElement;
-        const flag = input.value;
+    let flag = "";
 
+    function handleSubmit() {
         axios.post(config.host + ":" + config.port + config.route + "@flag/submit", {
-            flag: flag,
+            flag,
             })
             .then((response) => {
             console.log(response);

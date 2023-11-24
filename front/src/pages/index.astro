@@ -1,5 +1,5 @@
 ---
-import Input from '../components/Input.astro';
+import Input from '../components/Input.svelte';
 import Navigation from '../components/Navigation.astro';
 import Layout from '../layouts/Layout.astro';
 ---
@@ -12,7 +12,7 @@ import Layout from '../layouts/Layout.astro';
 			<strong>Created by:</strong> Lasse, Youanna & Thore<br>
 		</p>
 		<Navigation></Navigation>
-		<Input>
+		<Input client:load>
 	</main>
 </Layout>
 
