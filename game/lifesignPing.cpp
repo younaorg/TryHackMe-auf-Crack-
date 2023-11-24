@@ -1,27 +1,59 @@
 #include <bits/stdc++.h>
 #include <thread>
 #include <chrono>
+#include <parseDaraJSON.h>
+#include <cpr.h>
+#include <curl/curl.h>
 
 using namespace std;
 
-/*void outputStringPeriodically(const std::string& str, int intervalSeconds) {
-    while (true) {
-        cout << str << endl;
-        this_thread::sleep_for(std::chrono::seconds(intervalSeconds));
-    }
-}*/
+size_t WriteCallback(void* contents, size_t size, size_t nmemb, std::string* output) {
+    size_t totalSize = size * nmemb;
+    output->append(static_cast<char*>(contents), totalSize);
+    return totalSize;
+}
 
-void sendRequest(, int intervalSeconds){
+void sendPostRequest(int intervalSeconds){
     while(true){
         // send request to webserver
+        // POST request
 
+        // URL to send POST request
+        const char* url = "https://example.com/api/endpoint";
+    
+        // initialize cURL
+        CURL* curl = curl_easy_init();
+        if (curl) {
+            // set URL
+            curl_easy_setopt(curl, CURLOPT_URL, url);
+
+            // perform POST request
+            CURLcode res = curl_easy_perform(curl);
+
+            // errors
+            if (res != CURLE_OK) {
+                std::cerr << "cURL failed: " << curl_easy_strerror(res) << endl;
+            } else {
+                // print response
+                cout << "Response:\n" << response << endl;
+            }
+
+            // cleanup
+            curl_easy_cleanup(curl);
+        } else {
+            std::cerr << "Failed to initialize cURL." << endl;
+        }
         this_thread::sleep_for(std::chrono::seconds(intervalSeconds));
     }
 }
 
-int main() {
+int main(int argc, char** argv) {
+    // GET request
+    auto response = cpr::Get(cpr::Url{"http://httpbin.org/get"});
+    cout << "OK" << endl;
+
     // start a thread to call a function every few seconds
-    std::thread t(outputStringPeriodically, "Pinging Server...", 60);
+    std::thread t(sendPostRequest, "Pinging Server...", nextcheck);
 
     // keep the main thread running 
     for (int i = 0; i < 10; ++i) {

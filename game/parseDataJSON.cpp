@@ -12,6 +12,7 @@ int main(){
         // accessing values
         string flag = parsed_json["flag"];
         string path = parsed_json["path"];
+        string nextcheck = parsed_json["nextcheck"];
 
     } catch (const json::exception& e){
         std::cerr << "Error parsing JSON: " << e.what() << endl;
