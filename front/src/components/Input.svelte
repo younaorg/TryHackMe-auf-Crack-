@@ -10,13 +10,10 @@
 
     let flag = "";
 
-    function handleSubmit() {
-        axios.post(config.host + ":" + config.port + config.route + "@flag/submit", {
+    async function handleSubmit() {
+        const response = await axios.post(config.host + ":" + config.port + config.route + "@flag/submit", {
             flag,
             })
-            .then((response) => {
-            console.log(response);
-        });
     }
 </script>
 

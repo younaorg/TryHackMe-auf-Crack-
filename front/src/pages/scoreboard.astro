@@ -1,22 +1,7 @@
 ---
-import Input from '../components/Input.svelte';
-import Layout from '../layouts/Layout.astro';
+
 ---
 
-<Layout title="CTF game">
-	<main>
-		<h1>Welcome to <span class="text-gradient">our CTF</span></h1>
-		<p class="instructions" style="width: 60%">
-			Simple capture the flag game (HPI Code Night 2023)<br/>
-			<strong>Created by:</strong> Lasse, Youanna & Thore<br>
-		</p>
-		<div class="instructions" style="width: 20%">
-			<img id="trophy" src="trophy.svg"/>
-			<p style="text-align: center;">Scoreboard</p>
-		</div>
-		<Input client:load>
-	</main>
-</Layout>
 
 <style>
 	main {
@@ -74,12 +59,5 @@ import Layout from '../layouts/Layout.astro';
 		grid-template-columns: repeat(auto-fit, minmax(24ch, 1fr));
 		gap: 2rem;
 		padding: 0;
-	}
-
-	#trophy {
-		display: block;
-  		margin-left: auto;
-		margin-right: auto;
-		width: 40%;
 	}
 </style>
