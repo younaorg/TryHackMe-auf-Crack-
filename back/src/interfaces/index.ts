@@ -10,3 +10,8 @@ export interface Flag {
 }
 
 type FlagPool = Flag[];
+
+export interface Team {
+  id: number;
+  score: number;
+}
