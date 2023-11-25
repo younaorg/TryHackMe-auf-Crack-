@@ -1,16 +1,18 @@
 import { json, Request, Response, Router } from "express";
+import { byTeam } from "../../functions/game";
+import { game } from "../../providers/game.provider";
 
 const router = Router();
 const controller = { controller: "@scoreboard" };
-type responseType = "success" | "failure";
 
 router.get("/get", json(), (req: Request, res: Response) => {
-  const response: responseType = "failure";
+  const { teamId } = req.body;
+  const flagsForTeam = game.pool.filter(byTeam(teamId));
 
   res.json({
     ...controller,
     status: 200,
-    data: response,
+    data: flagsForTeam,
   });
 });
 
