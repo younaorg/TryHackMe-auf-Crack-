@@ -6,13 +6,15 @@ import Layout from '../layouts/Layout.astro';
 <Layout title="CTF game">
 	<main>
 		<h1>Welcome to <span class="text-gradient">our CTF</span></h1>
-		<p class="instructions" style="width: 60%">
+		<p class="instructions" style="width: 100%; text-align: center;">
 			Simple capture the flag game (HPI Code Night 2023)<br/>
 			<strong>Created by:</strong> Lasse, Youanna & Thore<br>
 		</p>
-		<div class="instructions" style="width: 20%">
+		<div class="instructions" style="width: 100%">
+		<a href="/scoreboard">
 			<img id="trophy" src="trophy.svg"/>
 			<p style="text-align: center;">Scoreboard</p>
+		</a>
 		</div>
 		<Input client:load>
 	</main>
@@ -80,6 +82,11 @@ import Layout from '../layouts/Layout.astro';
 		display: block;
   		margin-left: auto;
 		margin-right: auto;
-		width: 40%;
+		width: 5%;
+	}
+
+	a {
+		text-decoration: none;
+		color: white;
 	}
 </style>

@@ -24,6 +24,7 @@
 		background: linear-gradient(rgba(var(--accent-dark), 66%), rgba(var(--accent-dark), 33%));
 		padding: 1.5rem;
 		border-radius: 8px;
+        width: 100%;
 	}
 	.input code {
 		font-size: 0.8em;
